@@ -1,0 +1,1 @@
+<html><body>You are being <a href="https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_PostgreSql.sql">redirected</a>.</body></html>
