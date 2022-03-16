@@ -35,5 +35,16 @@ function getTodos(){
     })
 }
 
+function createTodo(todo){
+    if(todo.length <= 1){
+        console.log('not enough letters')
+    }
+    else{
+    client.query(`INSERT INTO todos(todo) VALUES($1)`,[todo],(err)=>{
+        if(err){console.error(err.stack)}
+        else{console.log('user created')}
+    })
+    }
+}
 
-getTodos()
+
