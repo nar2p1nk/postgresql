@@ -47,4 +47,14 @@ function createTodo(todo){
     }
 }
 
+function deleteTodo(id){
+    client.query(`DELETE FROM todos WHERE id = $1`,[id],(err)=>{
+        if(err){console.log(err.stack)}
+        else{console.log('todo deleted')}
+    })
+}
+
+
+getTodos()
+
 
