@@ -12,11 +12,28 @@ require('custom-env').env('secret')
 const connectionString = process.env.CONNECT_STRING;
 
 const client = new pg.Client(connectionString);
-
+const todo = [];
 client.connect();
 
+function getTodo(id){
+    client.query(`SELECT * FROM todos WHERE id = $1`,[id],(err,res)=>{
+        if(err){console.error(err.stack)}
+        else{
+            const row = res.rows[0];
+            console.log(row)
+        }
+        client.end()
+    })
+}
 
-client.query(`SELECT * FROM todos WHERE id = $1`,[2],(err,res)=>{
-    console.log(err ? err.stack : res.rows[0])
-    client.end()
-})
+function getTodos(){
+    client.query(`SELECT * FROM todos`,[],(err,res)=>{
+        if(err){console.log(err.stack)}
+        else{
+            console.log(res.rows);
+        }
+    })
+}
+
+
+getTodos()
